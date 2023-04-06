@@ -15,4 +15,4 @@ npm run build
 ```
 
 ![Imgur](https://imgur.com/c5aXbab.gif)
-![Imgur](https://imgur.com/LFtMe5O.gif)
+![Imgur](https://imgur.com/LFtMe5O.mp4)
