@@ -4,6 +4,7 @@
 import * as THREE from 'three'
 import { MeshDepthMaterial } from 'three'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
+import { VRButton } from 'three/addons/webxr/VRButton.js'
 // Canvas
 const canvas = document.querySelector('canvas.webgl') //create canvas using the webgl class specified in index.html
 
@@ -96,11 +97,11 @@ const renderer = new THREE.WebGLRenderer({
     canvas: canvas
 })
 
-
+document.body.appendChild( VRButton.createButton( renderer ) );
+renderer.xr.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-const tick = () =>
-{
+renderer.setAnimationLoop( function () {
     controls.update()
 
     // Render
@@ -108,6 +109,10 @@ const tick = () =>
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
+})
+const tick = () =>
+{
+
 }
 
 tick()
