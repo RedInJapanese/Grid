@@ -1,5 +1,4 @@
 # Grid Test
-![Imgur](https://imgur.com/c5aXbab.gif)
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
@@ -14,3 +13,5 @@ npm run dev
 # Build for production in the dist/ directory
 npm run build
 ```
+
+![Imgur](https://imgur.com/c5aXbab.gif)
