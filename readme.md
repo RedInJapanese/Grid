@@ -1,5 +1,5 @@
 # Grid Test
-[Imgur](https://imgur.com/IES0ONb)
+![Imgur](https://imgur.com/IES0ONb)
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
 Run this followed commands:
