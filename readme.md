@@ -18,4 +18,4 @@ npm run build
 ![Imgur](https://imgur.com/LFtMe5O.mp4)
 !(image)(https://imgur.com/aeMW3zu.gif)
 !(image)(https://i.imgur.com/0x3cmC9.gif)
-![Imgur](https://i.imgur.com/tVvTEKN.mp4)
+![Imgur](https://imgur.com/AKLGXxq)
