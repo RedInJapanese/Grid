@@ -1,3 +1,6 @@
+// source for raycasting code: (Wael Yasmina) https://youtu.be/oQbfy8QP8Lc
+//source for click event listener (Wael Yasmina)
+
 import * as THREE from 'three'
 import { MeshDepthMaterial } from 'three'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls.js'
@@ -37,6 +40,7 @@ scene.add(h_mesh)
 const mouse_pos = new THREE.Vector2()
 const raycaster = new THREE.Raycaster()
 let intersects
+let intersect_point_copy = new THREE.Vector3()
 
 window.addEventListener('mousemove', function(e)
 { 
@@ -46,14 +50,24 @@ window.addEventListener('mousemove', function(e)
     raycaster.setFromCamera(mouse_pos, camera) //updates the ray with a new origin and direction
     intersects = raycaster.intersectObjects(scene.children)  //checks for the intersection between the obejct 
 
-    intersects.forEach(function(intersect) {
-        if(intersect.object.name === 'floor'){
-            const highlight_pos = new THREE.Vector3().copy(intersect.point).floor().addScalar(0.5)
-            h_mesh.position.set(highlight_pos.x, .5, highlight_pos.z)
+    intersects.forEach(function(intersect) { 
+        if(intersect.object.name === 'floor'){ //checking if the scene child intersected with is the first mesh
+            const highlight_pos = new THREE.Vector3().copy(intersect.point).floor().addScalar(0.5) //calculates the position of the intersection
+            intersect_point_copy = highlight_pos
+            h_mesh.position.set(highlight_pos.x, .5, highlight_pos.z) //sets position
         }
     })
 })
 
+window.addEventListener('click', function(e) 
+{ 
+    const box = new THREE.BoxGeometry(1,1,1)
+    const mat = new THREE.MeshBasicMaterial({color:'white'})
+    const box_mesh = new THREE.Mesh(box, mat)
+    box_mesh.position.set(intersect_point_copy.x, 0.5, intersect_point_copy.z)
+    scene.add(box_mesh)
+
+})
 
 window.addEventListener('resize', () =>
 {
