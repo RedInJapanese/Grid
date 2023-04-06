@@ -18,7 +18,7 @@ mesh.rotation.x -= Math.PI/2 //what is this part for?
 
 const grid = new THREE.GridHelper(100, 100) //three.js class that adds a 2d grid to a given scene
 scene.add(mesh)
-mesh.name = 'ground'
+mesh.name = 'floor'
 scene.add(grid)
 
 
@@ -44,11 +44,10 @@ window.addEventListener('mousemove', function(e)
     //normalized device coordinates: screen independent display coordinate system in which x y and z are components from range -1 to 1 
     mouse_pos.y = -(e.clientY/window.innerHeight)*2 + 1 
     raycaster.setFromCamera(mouse_pos, camera) //updates the ray with a new origin and direction
-    
-    intersects = raycaster.intersectObjects(scene.children)
+    intersects = raycaster.intersectObjects(scene.children)  //checks for the intersection between the obejct 
 
     intersects.forEach(function(intersect) {
-        if(intersect.object.name === 'ground'){
+        if(intersect.object.name === 'floor'){
             const highlight_pos = new THREE.Vector3().copy(intersect.point).floor().addScalar(0.5)
             h_mesh.position.set(highlight_pos.x, .5, highlight_pos.z)
         }
